@@ -2,9 +2,9 @@ require 'net/http'
 
 class JsonImporter
 
-  def initialize(source)
+  def initialize
 
-    @source = source
+    @source = "https://gist.githubusercontent.com/vvo/08850adfc3736869f04bcf5586418add/raw/300a2d9804cfecc549cfd1e209c1e4f25b39dd79/data.json"
     @appInfo = []
     @errors = []
 
@@ -13,7 +13,7 @@ class JsonImporter
 
   def pull_data
     begin
-      resp = Net::HTTP.get_response(URI.parse(source))
+      resp = Net::HTTP.get_response(URI.parse(@source))
       @appInfo = JSON.parse(resp.body)
       create_assets
     rescue => exception
