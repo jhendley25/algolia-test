@@ -1,76 +1,46 @@
 require 'net/http'
 
-class JsonCollectionImporter
-  attr_accessor :source, :user, :collection_title, :errors
+class JsonImporter
 
-	  def initialize(source, user_id, collection_title = nil)
+  def initialize(source)
 
-	    @source = source
-	    @collection_title = collection_title
-	    @collectionInfo = []
-	    @errors = []
-      @user_id = user_id
+    @source = source
+    @appInfo = []
+    @errors = []
 
-	  end
+  end
 
 
-	  def pull_data
-	  	begin
-  			resp = Net::HTTP.get_response(URI.parse(source))
-  			@collectionInfo = JSON.parse(resp.body)
-  			create_assets
-  		rescue => exception
-  			@errors << exception.backtrace
-  			false
-  		end
+  def pull_data
+    begin
+      resp = Net::HTTP.get_response(URI.parse(source))
+      @appInfo = JSON.parse(resp.body)
+      create_assets
+    rescue => exception
+      @errors << exception.backtrace
+      false
+    end
 
-  		true
+    true
 
-	  end
+  end
 
-	private
+  private
 
-	  def create_assets
+  def create_assets
 
-	  	@collection_title ||= @collectionInfo['title']
+    @appInfo.each do |app|
 
-	  	defaultSharedCollection = Collection.create!( :title => @collection_title,
-	  												  :cover => @collectionInfo['cover'],
-	  												  :user_id => @user_id,
-	  												)
+      app = App.create!(
+        :category => app['category'],
+        :rating => app['rating'],
+        :name => app['name'],
+        :image => app['image'],
+        :link => app['link'],
+        :rating_count => app['ratingCount'],
+        :price => app['price'],
+      )
 
-  		@collectionInfo['moments'].each do |momentInfo|
-
-	  		moment = Moment.create!(
-
-	  			:user_id => @user_id,
-	  			:type_name => momentInfo['type_name'],
-	  			:meta => momentInfo['meta'],
-	  			:given_date => momentInfo['given_date'],
-	  			:description => momentInfo['description'],
-	  			:dropbox_path => momentInfo['dropbox_path'],
-
-	  		)
-
-	  		if locationInfo = @collectionInfo['moments'][0]['location']
-
-	  			location = Location.create!( :user_id => @user_id,
-	  										 :lat => locationInfo['lat'],
-	  										 :lng => locationInfo['lng'],
-	  										 :meta => locationInfo['meta'],
-	  										 :name => locationInfo['name'],
-	  										)
-	  			moment.location = location
-	  	    	moment.save
-	  	    end
-
-	  		defaultSharedCollection.moments << moment
-
-  		end
-
-
-
-	  end
-
-
+    end
+  end
 end

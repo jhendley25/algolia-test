@@ -1,0 +1,52 @@
+<%= form_with(model: app, local: true) do |form| %>
+  <% if app.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(app.errors.count, "error") %> prohibited this app from being saved:</h2>
+
+      <ul>
+      <% app.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, id: :app_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.number_field :rating, id: :app_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :app_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image, id: :app_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link, id: :app_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rating_count %>
+    <%= form.number_field :rating_count, id: :app_rating_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :app_price %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
