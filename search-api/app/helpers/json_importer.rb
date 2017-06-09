@@ -28,9 +28,9 @@ class JsonImporter
   private
 
   def create_assets
-
+    categories = []
     @appInfo.each do |app|
-
+      categories << app['category']
       app = App.create!(
         :category => app['category'],
         :rating => app['rating'],
@@ -41,6 +41,12 @@ class JsonImporter
         :price => app['price'],
       )
 
+    end
+
+    categories.uniq.each do |category|
+      Category.create!(
+        :name => category
+      )
     end
   end
 end
