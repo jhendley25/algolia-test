@@ -51,4 +51,6 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  ENV["ALGOLIA_API_KEY"] = "31de913bbfcc9f3f00a90ea4d9b5a223"
 end

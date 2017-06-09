@@ -40,6 +40,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    algoliasearch (1.13.0)
+      httpclient (~> 2.8.3)
+      json (>= 1.5.1)
     arel (8.0.0)
     bindex (0.5.0)
     builder (3.2.3)
@@ -66,10 +69,12 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    httpclient (2.8.3)
     i18n (0.8.4)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    json (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -173,6 +178,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  algoliasearch
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
