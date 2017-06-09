@@ -1,12 +1,9 @@
 import $ from "jQuery"
 import _ from "lodash"
 import Backbone from "backbone"
-import template from "../templates/hello.jade"
 
-import {
-  first,
-  second
-} from "../views/_manifest"
+import HomeView from "../views/home-view"
+
 
 const Router = Backbone.Router.extend({
   routes: {
@@ -17,14 +14,7 @@ const Router = Backbone.Router.extend({
     cb.apply(this, args)
   },
   home: function() {
-
-    $(".main").append(template({
-      msg:"cool story bro",
-      resp: "tell it again"
-    }))
-    first()
-    second()
-
+    new HomeView();
   }
 })
 
