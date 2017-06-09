@@ -14,6 +14,7 @@ class AlgoliaSeeder
 
   def create_index
     @index = Algolia::Index.new("apps")
+    @index.clear! #make sure we have the latest data
   end
 
   def push_data
