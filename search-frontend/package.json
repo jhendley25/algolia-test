@@ -21,6 +21,7 @@
     "build:images": "npm run imagemin && npm run favicon",
     "build": "npm run html && npm run videos && npm run build:css && npm run build:js && npm run build:images",
     "postbuild": "gulp revreplace",
+    "deploy": "gh-pages-deploy",
     "prewatch": "cp config/local-config.js src/scripts/config/config.js",
     "watch:scss": "node-sass src/styles/manifest.scss --recursive --watch --output dist/css/",
     "watch:js": "watchify src/scripts/index.js -o dist/js/bundle.js",
@@ -88,5 +89,9 @@
   },
   "browserify-shim": {
     "jQuery": "$"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+    "noprompt": false
   }
 }
