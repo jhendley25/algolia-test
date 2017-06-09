@@ -11,6 +11,7 @@
     "lint": "eslint src/scripts",
     "browserify": "browserify src/scripts/index.js | uglifyjs -c > dist/js/bundle.js",
     "imagemin": "imagemin src/images dist/images -p",
+    "videos": "cp src/videos/* dist/videos",
     "favicon": "cp src/favicon.ico dist/",
     "prebuild:clean": "rm -rf dist && mkdir -p dist/css dist/js dist/images",
     "prebuild:cachebust": "gulp cachebust",
@@ -18,7 +19,7 @@
     "build:css": "npm run scss && npm run autoprefixer",
     "build:js": "npm run browserify",
     "build:images": "npm run imagemin && npm run favicon",
-    "build": "npm run html && npm run build:css && npm run build:js && npm run build:images",
+    "build": "npm run html && npm run videos && npm run build:css && npm run build:js && npm run build:images",
     "postbuild": "gulp revreplace",
     "prewatch": "cp config/local-config.js src/scripts/config/config.js",
     "watch:scss": "node-sass src/styles/manifest.scss --recursive --watch --output dist/css/",
@@ -72,7 +73,8 @@
   "dependencies": {
     "diffhtml": "^0.9.2",
     "localforage": "^1.4.2",
-    "normalize.css": "^4.2.0"
+    "normalize.css": "^4.2.0",
+    "vidage": "^0.3.5"
   },
   "browserify": {
     "transform": [

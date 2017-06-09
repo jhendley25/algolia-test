@@ -12,19 +12,21 @@ const HomeView = Backbone.View.extend({
   },
 
   initialize: function(options = {}) {
-    log("HomeView initialized, options are ", options);
+    console.log("HomeView initialized, options are ", options);
+
+    this.render()
   },
 
   render: function() {
 
-    this.$el.html(template(this.homeData))
+    this.$el.html(template({msg:"test", resp:"cool"}))
     innerHTML($(".main")[0], this.$el)
 
     return this
   },
 
   handleIt: function() {
-    log("click fired");
+    console.log("click fired");
   }
 })
 export default HomeView

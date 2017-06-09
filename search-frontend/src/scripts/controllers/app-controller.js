@@ -1,7 +1,8 @@
 import $ from "jQuery"
 import Backbone from "backbone"
 import Router from "../routers/router"
-import sayHello from "./test-controller"
+import Vidage from '../vendor/vidage.min'
+
 
 
 class AppController {
@@ -13,6 +14,10 @@ class AppController {
     console.log("init");
     new Router();
     Backbone.history.start();
+
+    new Vidage('#VidageVideo');
+
+
 
 
   }
