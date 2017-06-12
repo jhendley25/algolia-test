@@ -8,7 +8,6 @@ import HomeView from "../views/home-view"
 const Router = Backbone.Router.extend({
   routes: {
     '': 'home',
-    'somewhere': 'somewhere'
   },
   execute: function(cb, args) {
     cb.apply(this, args)
