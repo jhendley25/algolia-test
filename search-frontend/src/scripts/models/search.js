@@ -16,6 +16,15 @@ const SearchCollection = Backbone.Collection.extend({
     } else {
       return item.get('rating');
     }
+  },
+  toggleSort: function() {
+    if (this.sortOrder == "DESC") {
+      this.sortOrder = "ASC"
+      this.sort()
+    } else {
+      this.sortOrder = "DESC"
+      this.sort()
+    }
   }
 })
 

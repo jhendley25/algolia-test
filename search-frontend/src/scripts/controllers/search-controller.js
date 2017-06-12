@@ -12,6 +12,7 @@ import categoryTemplate from "../templates/search/category.jade"
 
 class SearchController {
   constructor(options = {}) {
+    window.$ = $
     this.resultsCollection = new SearchCollection()
     this.categoryCollection = new SearchCollection()
     this.algolia = algoliasearch('EKC0TX7X1G', '31de913bbfcc9f3f00a90ea4d9b5a223');
@@ -45,9 +46,14 @@ class SearchController {
   }
 
   async renderCategories() {
-    console.log("renderCategories called, col is ", this.categoryCollection);
-    let results = await Promise.all(this.categoryCollection.map(this.compileCategory, this))
-    innerHTML($(".category-container")[0], results.join(""))
+    if (!this.categoriesFetched){
+    // if (true){
+      console.log("renderCategories called, col is ", this.categoryCollection);
+      let results = await Promise.all(this.categoryCollection.map(this.compileCategory, this))
+      results.unshift("<option class='default' selected='selected' disabled='disabled'>Filter By Category</option>")
+      innerHTML($(".categories")[0], results.join(""))
+      this.categoriesFetched = true
+    }
   }
 
   compileCategory(category) {
@@ -58,6 +64,7 @@ class SearchController {
 
   registerEvents() {
     this.resultsCollection.on("reset", this.renderResults.bind(this))
+    this.resultsCollection.on("sort", this.renderResults.bind(this))
     this.categoryCollection.on("reset", this.renderCategories.bind(this))
     this.helper.on("result", (results) => {
       this.resultsCollection.reset(results.hits)
@@ -67,9 +74,18 @@ class SearchController {
       this.helper.setQuery(this.$inputfield.val()).search();
     });
 
-    $("body").on("click", ".category", (e) => {
-      console.log("click");
-      this.helper.addFacetRefinement("category", $(e.currentTarget).data("category")).search()
+    $("body").on("click", ".clear-filter", (e) => {
+      this.helper.removeFacetRefinement("category").search()
+      $(".default").attr("selected", "selected")
+    })
+    $("body").on("click", ".sort-results", (e) => {
+      this.resultsCollection.toggleSort()
+    })
+    $("body").on("change", ".categories", (e) => {
+      console.log($( "select option:selected" ).text());
+      this.helper.removeFacetRefinement("category")
+      this.helper.addFacetRefinement("category", $( "select option:selected" ).text()).search()
+
     })
   }
 }

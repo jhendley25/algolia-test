@@ -1,31 +1,35 @@
 .search-input-container {
+  animation-name: zoomInDown;
+  animation-duration: 3s;
+  animation-fill-mode: both;
   .search-input {
     width: 400px;
     height: 45px;
     border-radius: 4px;
     font-size: 30px;
   }
+  .category-container, .search-input, .sort-results, .clear-filter {
+    display: inline-block;
+  }
 }
 
 .search-results-container {
-  height: 400px;
+  animation-name: zoomInDown;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  height: 600px;
   background: white;
   & * {
     color: black;
     display: block;
   }
 
-  .category-container {
-    display: inline-block;
-    width: 20%;
-    height: 100%;
-    border: 1px solid blue;
-  }
   .search-results {
     display: inline-block;
     vertical-align: top;
     width: 79%;
     height: 100%;
     border: 1px solid blue;
+    overflow-y: scroll;
   }
 }
