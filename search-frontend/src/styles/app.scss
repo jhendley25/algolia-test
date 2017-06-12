@@ -10,4 +10,22 @@
 .search-results-container {
   height: 400px;
   background: white;
+  & * {
+    color: black;
+    display: block;
+  }
+
+  .category-container {
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    border: 1px solid blue;
+  }
+  .search-results {
+    display: inline-block;
+    vertical-align: top;
+    width: 79%;
+    height: 100%;
+    border: 1px solid blue;
+  }
 }
