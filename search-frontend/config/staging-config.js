@@ -1,4 +1,4 @@
 const config = {
-  apiUrl: "https://damp-inlet-70783.herokuapp.com/"
+  apiUrl: "https://immense-ridge-74191.herokuapp.com/"
 }
 export default config

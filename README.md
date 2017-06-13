@@ -6,7 +6,7 @@
 ### Create
 
 ```
-curl https://damp-inlet-70783.herokuapp.com/api/1/apps \
+curl https://immense-ridge-74191.herokuapp.com/api/1/apps \
     -X POST \
     -H 'Content-Type: application/json' \
     -H "Accept: text/html,application/json" \
@@ -16,7 +16,7 @@ curl https://damp-inlet-70783.herokuapp.com/api/1/apps \
 ### Delete
 
 ```
-curl -X DELETE https://damp-inlet-70783.herokuapp.com/api/1/apps/1000
+curl -X DELETE https://immense-ridge-74191.herokuapp.com/api/1/apps/1000
 ```
 
 Note that the apps search index should be immediately updated after creation/deletion.
