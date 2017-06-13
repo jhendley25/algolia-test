@@ -10,7 +10,7 @@ curl https://damp-inlet-70783.herokuapp.com/api/1/apps \
     -X POST \
     -H 'Content-Type: application/json' \
     -H "Accept: text/html,application/json" \
-    -d '{"app":{"category":"Games","rating": 5, "name": "best ever", "image":"http://fillmurray.com/60/60", "link":"http://notareallink.com", "rating_count": 12345, "price": "123 USD"}}'
+    -d '{"mobile_app":{"category":"Games","rating": 5, "name": "best ever", "image":"http://fillmurray.com/60/60", "link":"http://notareallink.com", "rating_count": 12345, "price": "123 USD"}}'
 ```
 
 ### Delete
@@ -28,7 +28,7 @@ The api is a minimal rails 5 app that exposes the above endpoints and handles se
 
 A few things to note:
 
-- the Algolia index is updated via model hooks in [search-api/app/models/app.rb](search-api/app/models/app.rb)
+- the Algolia index is updated via model hooks in [search-api/app/models/mobile_app.rb](search-api/app/models/mobile_app.rb)
 - the database seeder utilities can be found in [search-api/app/helpers](search-api/app/helpers) and are run via migrations. I probably wouldn't normally do the seeding in migrations but it works well for the small scope of this app.
 
 
