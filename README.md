@@ -1,5 +1,7 @@
 # Algolia test app
 
+The deployed app can be found here: [https://jhendley25.github.io/search-frontend/](https://jhendley25.github.io/search-frontend/)
+
 ## Example curls for creating and deleting apps
 
 
