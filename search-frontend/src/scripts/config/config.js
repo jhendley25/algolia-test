@@ -1,4 +1,4 @@
 const config = {
-  apiUrl: "http://localhost:3000",
+  apiUrl: "https://damp-inlet-70783.herokuapp.com/"
 }
 export default config

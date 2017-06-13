@@ -1,7 +1,9 @@
-const cachebust = {
-  sha: "${Date.now()}"
-}
 
-console.log("sha is ", cachebust.sha)
+    const cachebust = {
+      sha: "1497372795231"
+    }
 
-export default cachebust
+    console.log("sha is ", cachebust.sha)
+
+    export default cachebust
+  
