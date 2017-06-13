@@ -30,6 +30,7 @@ A few things to note:
 
 - the Algolia index is updated via model hooks in [search-api/app/models/mobile_app.rb](search-api/app/models/mobile_app.rb)
 - the database seeder utilities can be found in [search-api/app/helpers](search-api/app/helpers) and are run via migrations. I probably wouldn't normally do the seeding in migrations but it works well for the small scope of this app.
+- there are minimal tests can be run with `rake test`.
 
 
 ## Frontend notes
