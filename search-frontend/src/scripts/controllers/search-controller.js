@@ -47,7 +47,6 @@ class SearchController {
 
   async renderCategories() {
     if (!this.categoriesFetched){
-    // if (true){
       console.log("renderCategories called, col is ", this.categoryCollection);
       let results = await Promise.all(this.categoryCollection.map(this.compileCategory, this))
       results.unshift("<option class='default' selected='selected' disabled='disabled'>Filter By Category</option>")
@@ -85,7 +84,6 @@ class SearchController {
       console.log($( "select option:selected" ).text());
       this.helper.removeFacetRefinement("category")
       this.helper.addFacetRefinement("category", $( "select option:selected" ).text()).search()
-
     })
   }
 }
