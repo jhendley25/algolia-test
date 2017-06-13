@@ -119,6 +119,7 @@
       border-radius: 4px;
       overflow: hidden;
       margin-right: 10px;
+      background: #ccc;
       img {
         width: 40px;
         height: 40px;
@@ -135,6 +136,12 @@
       }
       .price {
         font-size: 11px;
+      }
+      .name {
+        // not super happy with clipping the text this way
+        max-width: 300px;
+        max-height: 17px;
+        overflow: hidden;
       }
     }
     .right-info {

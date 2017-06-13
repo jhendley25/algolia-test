@@ -12,7 +12,6 @@ import categoryTemplate from "../templates/search/category.jade"
 
 class SearchController {
   constructor(options = {}) {
-    window.$ = $
     this.resultsCollection = new SearchCollection()
     this.categoryCollection = new SearchCollection()
     this.algolia = algoliasearch('EKC0TX7X1G', '31de913bbfcc9f3f00a90ea4d9b5a223');
