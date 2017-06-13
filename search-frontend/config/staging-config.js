@@ -1,4 +1,4 @@
 const config = {
-  apiUrl: "placeholder yo"
+  apiUrl: "https://damp-inlet-70783.herokuapp.com/"
 }
 export default config
