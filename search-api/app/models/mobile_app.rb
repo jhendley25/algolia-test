@@ -1,4 +1,4 @@
-class App < ApplicationRecord
+class MobileApp < ApplicationRecord
   before_destroy :find_and_remove_from_algolia_index
   after_create :add_to_algolia_index
 

@@ -1,10 +1,10 @@
-class AppsController < ApplicationController
+class MobileAppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
 
   # GET /apps
   # GET /apps.json
   def index
-    @apps = App.all
+    @mobile_apps = MobileApp.all
 
     render :index
   end
@@ -16,9 +16,9 @@ class AppsController < ApplicationController
   # POST /apps
   # POST /apps.json
   def create
-    @app = App.new(app_params)
+    @mobile_app = MobileApp.new(app_params)
 
-    if @app.save
+    if @mobile_app.save
       render :show
     else
       head 422
@@ -28,7 +28,7 @@ class AppsController < ApplicationController
   # DELETE /apps/1
   # DELETE /apps/1.json
   def destroy
-    if @app.destroy
+    if @mobile_app.destroy
       head 200
     end
 
@@ -37,11 +37,11 @@ class AppsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_app
-      @app = App.find(params[:id])
+      @mobile_app = MobileApp.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def app_params
-      params.require(:app).permit(:category, :rating, :name, :image, :link, :rating_count, :price)
+      params.require(:mobile_app).permit(:category, :rating, :name, :image, :link, :rating_count, :price)
     end
 end

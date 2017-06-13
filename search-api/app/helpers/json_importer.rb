@@ -5,7 +5,7 @@ class JsonImporter
   def initialize
 
     @source = "https://gist.githubusercontent.com/vvo/08850adfc3736869f04bcf5586418add/raw/300a2d9804cfecc549cfd1e209c1e4f25b39dd79/data.json"
-    @appInfo = []
+    @mobile_appInfo = []
     @errors = []
 
   end
@@ -14,7 +14,7 @@ class JsonImporter
   def pull_data
     begin
       resp = Net::HTTP.get_response(URI.parse(@source))
-      @appInfo = JSON.parse(resp.body)
+      @mobile_appInfo = JSON.parse(resp.body)
       create_assets
     rescue => exception
       @errors << exception.backtrace
@@ -29,9 +29,8 @@ class JsonImporter
 
   def create_assets
     categories = []
-    @appInfo.each do |app|
-      categories << app['category']
-      app = App.create!(
+    @mobile_appInfo.each do |app|
+      app = MobileApp.create!(
         :category => app['category'],
         :rating => app['rating'],
         :name => app['name'],
@@ -41,12 +40,6 @@ class JsonImporter
         :price => app['price'],
       )
 
-    end
-
-    categories.uniq.each do |category|
-      Category.create!(
-        :name => category
-      )
     end
   end
 end

@@ -6,6 +6,6 @@ class SeedAppsData < ActiveRecord::Migration[5.1]
   end
 
   def down
-    App.destroy_all
+    MobileApp.destroy_all
   end
 end

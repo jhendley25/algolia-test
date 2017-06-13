@@ -1,6 +1,6 @@
-class CreateApps < ActiveRecord::Migration[5.1]
+class CreateMobileApps < ActiveRecord::Migration[5.1]
   def change
-    create_table :apps do |t|
+    create_table :mobile_apps do |t|
       t.string :category
       t.integer :rating
       t.string :name
